@@ -104,13 +104,15 @@ public class Address_Book_System{
         System.out.println("Welcome to Address Book System");
         String first_name,last_name,address,city,state,email,phone_number;
         int zip;
+        String new_f_n;
         Scanner sc = new Scanner(System.in);
         int choice = 1;
         ArrayList<Contact> arr = new ArrayList<>();
         do {
-            System.out.println("Press 1 - Add a new contact : ");
-            System.out.println("Press 2 - Edit an existing contact : ");
-            System.out.println("Press 3 - To Exit");
+            System.out.println("Press 1 - Add a new contact");
+            System.out.println("Press 2 - Edit an existing contact");
+            System.out.println("Press 3 - Delete a contact");
+            System.out.println("Press 4 - To Exit");
             choice = sc.nextInt();
             switch (choice){
                 case 1 : System.out.println("Enter Details : "+
@@ -131,7 +133,7 @@ public class Address_Book_System{
 
                 case 2:
                     System.out.println("Enter the First_Name you want to edit that perticular contact : ");
-                     String new_f_n=sc.next();
+                     new_f_n=sc.next();
                     for(Contact contact : arr){
                         if (contact.getFirst_name().equals(new_f_n)){
                             System.out.println("Enter New Details : "+
@@ -149,14 +151,24 @@ public class Address_Book_System{
                         System.out.println(contact);
                     }
                     break;
-
+                case 3: System.out.println("Enter the First_Name you want to delete perticular contact : ");
+                    new_f_n=sc.next();
+                    for(Contact contact : arr){
+                        if (contact.getFirst_name().equals(new_f_n)){
+                            arr.remove(contact);
+                            break;
+                        }
+                    }
+                    for(Contact contact : arr){
+                        System.out.println(contact);
+                    }
+                    break;
                 default:
                     System.out.println("Thank you...");
             }
-        }while (choice != 3);
+        }while (choice != 4);
         for(Contact contact : arr){
             System.out.println(contact);
         }
-
     }
 }
