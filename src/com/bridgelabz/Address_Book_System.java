@@ -144,9 +144,6 @@ public class Address_Book_System{
                             System.out.println("Phone number : ");       String newPhone_number = sc.next(); contact.setPhone_number(newPhone_number);
                             System.out.println("Zip Code : ");          int newZip = sc.nextInt(); contact.setZip(newZip);
                         }
-                        else{
-                            System.out.println("Details not found with phone number : "+new_f_n);
-                        }
                     }
                     for(Contact contact : arr){
                         System.out.println(contact);
