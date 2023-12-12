@@ -1,25 +1,55 @@
 package com.bridgelabz;
-//Ability to create a Contacts in Address Book with first and last names, address,
-//city, state, zip, phone number and email...
 
-public class Address_Book_System {
-    static String first_name,last_name,address,city,state,email,phone_number;
-    static int zip;
-    static void createContacts(){
-        System.out.println("Full name : "+first_name+" "+last_name+"\nAddress : "+address+
+import java.util.ArrayList;
+import java.util.Scanner;
+
+// Ability to add a new Contact to Address Book
+// - Use Console to add person details from AddressBookMain class
+// - Use Object Oriented Concepts to manage relationship between AddressBook and Contact Person
+class Contact{
+    String first_name,last_name,address,city,state,email,phone_number;
+    int zip;
+    Contact(String first_name,String last_name,String address,String city,String state,
+            String email,String phone_number, int zip){
+        this.first_name = first_name;
+        this.last_name = last_name;
+        this.address = address;
+        this.city = city;
+        this.state = state;
+        this.email = email;
+        this.phone_number = phone_number;
+        this.zip = zip;
+    }
+    void showContacts(){
+        System.out.println("Details is as follows: \nFull name : "+first_name+" "+last_name+"\nAddress : "+address+
                 "\nCity : "+city+"\nState : "+state+"\nemail : "+email+"\nPhone number : "+
                 phone_number+"\nZip : "+zip);
     }
+}
+public class Address_Book_System {
     public static void main(String[] args) {
         System.out.println("Welcome to Address Book System");
-        first_name="Prakash";
-        last_name="Zodge";
-        address="ABC sdf 99";
-        city = "Sambhajinagar";
-        state = "Maharashtra";
-        email = "Email";
-        zip = 400088;
-        phone_number="9876543210";
-        createContacts();
+        String first_name,last_name,address,city,state,email,phone_number;
+        int zip;
+        ArrayList arr = new ArrayList();
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Press 1 - Add a new contact : ");       int choice = sc.nextInt();
+        switch (choice){
+            case 1 : System.out.println("Enter Details : "+
+                    "\nFirst name : ");             first_name = sc.next();
+                System.out.println("Last name : ");     last_name = sc.next();
+                System.out.println("Address : ");       address = sc.next();
+                System.out.println("City : ");          city = sc.next();
+                System.out.println("State : ");       state = sc.next();
+                System.out.println("Email : ");     email = sc.next();
+                System.out.println("Phone number : ");       phone_number = sc.next();
+                System.out.println("Zip Code : ");          zip = sc.nextInt();
+                Contact prakash = new Contact(first_name,last_name,address,city,state,email,phone_number,zip);
+                arr.add(prakash);
+                prakash.showContacts();
+            default:
+                System.out.println("Invalid choice ");
+        }
+
     }
 }
