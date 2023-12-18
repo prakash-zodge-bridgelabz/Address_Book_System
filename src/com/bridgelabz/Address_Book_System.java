@@ -3,9 +3,10 @@ package com.bridgelabz;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-// Ability to add a new Contact to Address Book
-// - Use Console to add person details from AddressBookMain class
-// - Use Object Oriented Concepts to manage relationship between AddressBook and Contact Person
+// UC 5
+// Ability to add multiple person to Address Book
+//- Use Console to add person details one at a time
+//- Use Collection Class to maintain multiple contact persons in Address Book
 class Contact{
     String first_name,last_name,address,city,state,email,phone_number;
     int zip;
@@ -107,6 +108,7 @@ public class Address_Book_System{
         String new_f_n;
         Scanner sc = new Scanner(System.in);
         int choice = 1;
+        //Collection Class to maintain multiple contact persons in Address Book
         ArrayList<Contact> arr = new ArrayList<>();
         do {
             System.out.println("Press 1 - Add a new contact");
