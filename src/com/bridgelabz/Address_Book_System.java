@@ -3,10 +3,9 @@ package com.bridgelabz;
 import java.util.ArrayList;
 import java.util.Scanner;
 
-// UC 5
-// Ability to add multiple person to Address Book
-//- Use Console to add person details one at a time
-//- Use Collection Class to maintain multiple contact persons in Address Book
+// UC 6
+// Refactor to add multiple Address Book to the System. Each Address Book has a unique Name
+// - Use Console to add new Address Book - Maintain Dictionary of Address Book Name to Address Book
 class Contact{
     String first_name,last_name,address,city,state,email,phone_number;
     int zip;
@@ -126,8 +125,28 @@ public class Address_Book_System{
                     System.out.println("Email : ");     email = sc.next();
                     System.out.println("Phone number : ");       phone_number = sc.next();
                     System.out.println("Zip Code : ");          zip = sc.nextInt();
-                    Contact newContact = new Contact(first_name,last_name,address,city,state,email,phone_number,zip);
-                    arr.add(newContact);
+                    if(arr.isEmpty()==true){
+                        System.out.println("Array list is empty...");
+                        Contact newContact = new Contact(first_name,last_name,address,city,state,email,phone_number,zip);
+                        arr.add(newContact);
+                        System.out.println("Added new contact");
+                    }
+                    else {
+                        System.out.println("Array list is not empty...");
+                        for(Contact contact : arr){
+                            //Condition to check whether the first name is already present in the address book or not
+                            if(contact.getFirst_name().equals(first_name)){
+                                System.out.println("First name is already present in address book");
+                                break;
+                            }
+                            else {
+                                Contact newContact = new Contact(first_name,last_name,address,city,state,email,phone_number,zip);
+                                arr.add(newContact);
+                                System.out.println("Added new contact");
+                                break;
+                            }
+                        }
+                    }
                     for(Contact contact : arr){
                         System.out.println(contact);
                     }
@@ -158,6 +177,7 @@ public class Address_Book_System{
                     for(Contact contact : arr){
                         if (contact.getFirst_name().equals(new_f_n)){
                             arr.remove(contact);
+                            System.out.println("Contact removed...");
                             break;
                         }
                     }
